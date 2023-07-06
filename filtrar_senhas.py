@@ -55,7 +55,7 @@ def filtrar_senhas_8_digitos():
     print(f"{Fore.GREEN}Senhas filtradas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
 
 def filtrar_senhas_10_digitos():
-    caminho_arquivo = os.path.expanduser("/senhas.txt")
+    caminho_arquivo = os.path.expanduser("/tokyo/senhas.txt")
     caminho_saida = os.path.expanduser("/senhas_filtradas_10.txt")
 
     if not validar_arquivo(caminho_arquivo):
@@ -156,7 +156,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}5. Gerar senhas aleatórias{Style.RESET_ALL}")
         print(f"{Fore.CYAN}6. Verificar força da senha{Style.RESET_ALL}")
         print(f"{Fore.RED}0. Sair{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}Script made by @MrRenan777{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}Script made by @MrRenan78{Style.RESET_ALL}")
 
         opcao = input(f"{Fore.YELLOW}Escolha uma opção: {Style.RESET_ALL}")
 
