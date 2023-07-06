@@ -181,7 +181,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}6. Verificar força da senha{Style.RESET_ALL}")
         print(f"{Fore.CYAN}7. Atualizar código{Style.RESET_ALL}")
         print(f"{Fore.CYAN}8. Sair{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}Script made by @MrRenan78{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}Script made by @MrRenan7{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
