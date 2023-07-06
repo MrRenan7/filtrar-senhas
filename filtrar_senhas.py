@@ -172,16 +172,16 @@ def atualizar_codigo():
 
 def exibir_menu():
     while True:
-        print("==== MENU ====")
-        print("1. Filtrar senhas de 4 dígitos")
-        print("2. Filtrar senhas de 8 dígitos")
-        print("3. Filtrar senhas de 10 dígitos")
-        print("4. Filtrar senhas de 12 dígitos")
-        print("5. Gerar senhas aleatórias")
-        print("6. Verificar força da senha")
-        print("7. Atualizar código")
-        print("8. Sair")
-        print("Script made by @MrRenan7")
+        print(f"{Fore.YELLOW}==== MENU ===={Style.RESET_ALL}")
+        print(f"{Fore.CYAN}1. Filtrar senhas de 4 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}2. Filtrar senhas de 8 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}3. Filtrar senhas de 10 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}4. Filtrar senhas de 12 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}5. Gerar senhas aleatórias{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}6. Verificar força da senha{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}7. Atualizar código{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}8. Sair{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}Script made by @MrRenan78{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
