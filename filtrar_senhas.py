@@ -181,7 +181,7 @@ def exibir_menu():
         print("6. Verificar força da senha")
         print("7. Atualizar código")
         print("8. Sair")
-        print("Script made by @MrRenan78")
+        print("Script made by @MrRenan7")
 
         opcao = input("Escolha uma opção: ")
 
