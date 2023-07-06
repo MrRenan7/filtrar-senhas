@@ -9,8 +9,8 @@ def validar_arquivo(caminho_arquivo):
     return True
 
 def filtrar_senhas_4_digitos():
-    caminho_arquivo = os.path.expanduser("/home/tokyo/senhas.txt")
-    caminho_saida = os.path.expanduser("/home/tokyo/senhas_filtradas_4.txt")
+    caminho_arquivo = os.path.expanduser("/senhas.txt")
+    caminho_saida = os.path.expanduser("/senhas_filtradas_4.txt")
 
     if not validar_arquivo(caminho_arquivo):
         return
@@ -32,8 +32,8 @@ def filtrar_senhas_4_digitos():
     print(f"{Fore.GREEN}Senhas filtradas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
 
 def filtrar_senhas_8_digitos():
-    caminho_arquivo = os.path.expanduser("/home/tokyo/senhas.txt")
-    caminho_saida = os.path.expanduser("/home/tokyo/senhas_filtradas_8.txt")
+    caminho_arquivo = os.path.expanduser("/senhas.txt")
+    caminho_saida = os.path.expanduser("/senhas_filtradas_8.txt")
 
     if not validar_arquivo(caminho_arquivo):
         return
@@ -55,8 +55,8 @@ def filtrar_senhas_8_digitos():
     print(f"{Fore.GREEN}Senhas filtradas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
 
 def filtrar_senhas_10_digitos():
-    caminho_arquivo = os.path.expanduser("/home/tokyo/senhas.txt")
-    caminho_saida = os.path.expanduser("/home/tokyo/senhas_filtradas_10.txt")
+    caminho_arquivo = os.path.expanduser("/senhas.txt")
+    caminho_saida = os.path.expanduser("/senhas_filtradas_10.txt")
 
     if not validar_arquivo(caminho_arquivo):
         return
@@ -78,8 +78,8 @@ def filtrar_senhas_10_digitos():
     print(f"{Fore.GREEN}Senhas filtradas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
 
 def filtrar_senhas_12_digitos():
-    caminho_arquivo = os.path.expanduser("/home/tokyo/senhas.txt")
-    caminho_saida = os.path.expanduser("/home/tokyo/senhas_filtradas_12.txt")
+    caminho_arquivo = os.path.expanduser("/senhas.txt")
+    caminho_saida = os.path.expanduser("/senhas_filtradas_12.txt")
 
     if not validar_arquivo(caminho_arquivo):
         return
@@ -117,7 +117,7 @@ def gerar_senhas_aleatorias(comprimento, caracteres_especiais=False, numeros=Fal
         senha = ''.join(random.choice(caracteres_permitidos) for _ in range(comprimento))
         senhas_geradas.append(senha)
 
-    caminho_saida = os.path.expanduser("/home/tokyo/senhas_geradas.txt")
+    caminho_saida = os.path.expanduser("/senhas_geradas.txt")
 
     with open(caminho_saida, "w") as arquivo_saida:
         for senha in senhas_geradas:
@@ -156,7 +156,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}5. Gerar senhas aleatórias{Style.RESET_ALL}")
         print(f"{Fore.CYAN}6. Verificar força da senha{Style.RESET_ALL}")
         print(f"{Fore.RED}0. Sair{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}Script made by @MrRenan7{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}Script made by @MrRenan777{Style.RESET_ALL}")
 
         opcao = input(f"{Fore.YELLOW}Escolha uma opção: {Style.RESET_ALL}")
 
