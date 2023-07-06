@@ -1,5 +1,5 @@
 import os
-import random
+import randomla
 from colorama import Fore, Style
 
 def validar_arquivo(caminho_arquivo):
