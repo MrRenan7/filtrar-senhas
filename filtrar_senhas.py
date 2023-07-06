@@ -120,7 +120,7 @@ def gerar_senhas_aleatorias(comprimento, caracteres_especiais=False, numeros=Fal
         senha = ''.join(random.choice(caracteres_permitidos) for _ in range(comprimento))
         senhas_geradas.append(senha)
 
-    caminho_saida = os.path.expanduser("/senhas_geradas.txt")
+    caminho_saida = os.path.expanduser("/root/senhas_geradas.txt")
 
     with open(caminho_saida, "w") as arquivo_saida:
         for senha in senhas_geradas:
