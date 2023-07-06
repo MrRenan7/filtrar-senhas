@@ -2,6 +2,8 @@ import requests
 import os
 import random
 from colorama import Fore, Style
+import sys
+import subprocess
 
 def validar_arquivo(caminho_arquivo):
     if not os.path.isfile(caminho_arquivo):
@@ -118,7 +120,7 @@ def gerar_senhas_aleatorias(comprimento, caracteres_especiais=False, numeros=Fal
         senha = ''.join(random.choice(caracteres_permitidos) for _ in range(comprimento))
         senhas_geradas.append(senha)
 
-    caminho_saida = os.path.expanduser("/root/senhas_geradas.txt")
+    caminho_saida = os.path.expanduser("/senhas_geradas.txt")
 
     with open(caminho_saida, "w") as arquivo_saida:
         for senha in senhas_geradas:
@@ -150,32 +152,38 @@ def verificar_forca_senha(senha):
 def atualizar_codigo():
     url = "https://raw.githubusercontent.com/MrRenan7/filtrar-senhas/master/filtrar_senhas.py"
     response = requests.get(url)
-    
+
     if response.status_code == 200:
         novo_codigo = response.text
-        
-        # Salvar o novo código em um arquivo
-        with open(__file__, "w") as arquivo:
+
+        # Salvar o novo código em um novo arquivo
+        with open("novo_filtrar_senhas.py", "w") as arquivo:
             arquivo.write(novo_codigo)
-        
-        print(f"{Fore.GREEN}Código atualizado com sucesso.{Style.RESET_ALL}")
+
+        print("Código atualizado com sucesso.")
+
+        # Reiniciar o script com o novo arquivo
+        python = sys.executable
+        subprocess.call([python, "novo_filtrar_senhas.py"])
+        sys.exit()
+
     else:
-        print(f"{Fore.RED}Erro ao atualizar o código: {response.status_code}{Style.RESET_ALL}")
+        print(f"Erro ao atualizar o código: {response.status_code}")
 
 def exibir_menu():
     while True:
-        print(f"{Fore.YELLOW}==== MENU ===={Style.RESET_ALL}")
-        print(f"{Fore.CYAN}1. Filtrar senhas de 4 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}2. Filtrar senhas de 8 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}3. Filtrar senhas de 10 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}4. Filtrar senhas de 12 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}5. Gerar senhas aleatórias{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}6. Verificar força da senha{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}7. Atualizar código{Style.RESET_ALL}")
-        print(f"{Fore.RED}0. Sair{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}Script made by @MrRenan7{Style.RESET_ALL}")
+        print("==== MENU ====")
+        print("1. Filtrar senhas de 4 dígitos")
+        print("2. Filtrar senhas de 8 dígitos")
+        print("3. Filtrar senhas de 10 dígitos")
+        print("4. Filtrar senhas de 12 dígitos")
+        print("5. Gerar senhas aleatórias")
+        print("6. Verificar força da senha")
+        print("7. Atualizar código")
+        print("8. Sair")
+        print("Script made by @MrRenan78")
 
-        opcao = input(f"{Fore.YELLOW}Escolha uma opção: {Style.RESET_ALL}")
+        opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
             filtrar_senhas_4_digitos()
@@ -186,22 +194,22 @@ def exibir_menu():
         elif opcao == "4":
             filtrar_senhas_12_digitos()
         elif opcao == "5":
-            comprimento = int(input(f"{Fore.YELLOW}Informe o comprimento da senha: {Style.RESET_ALL}"))
-            caracteres_especiais = input(f"{Fore.YELLOW}Incluir caracteres especiais? (S/N): {Style.RESET_ALL}").lower() == "s"
-            numeros = input(f"{Fore.YELLOW}Incluir números? (S/N): {Style.RESET_ALL}").lower() == "s"
-            letras_maiusculas = input(f"{Fore.YELLOW}Incluir letras maiúsculas? (S/N): {Style.RESET_ALL}").lower() == "s"
-            letras_minusculas = input(f"{Fore.YELLOW}Incluir letras minúsculas? (S/N): {Style.RESET_ALL}").lower() == "s"
-            quantidade = int(input(f"{Fore.YELLOW}Quantidade de senhas a serem geradas: {Style.RESET_ALL}"))
+            comprimento = int(input("Informe o comprimento da senha: "))
+            caracteres_especiais = input("Incluir caracteres especiais? (S/N): ").lower() == "s"
+            numeros = input("Incluir números? (S/N): ").lower() == "s"
+            letras_maiusculas = input("Incluir letras maiúsculas? (S/N): ").lower() == "s"
+            letras_minusculas = input("Incluir letras minúsculas? (S/N): ").lower() == "s"
+            quantidade = int(input("Quantidade de senhas a serem geradas: "))
             gerar_senhas_aleatorias(comprimento, caracteres_especiais, numeros, letras_maiusculas, letras_minusculas, quantidade)
         elif opcao == "6":
-            senha = input(f"{Fore.YELLOW}Digite a senha a ser verificada: {Style.RESET_ALL}")
+            senha = input("Digite a senha a ser verificada: ")
             forca_senha = verificar_forca_senha(senha)
             print(f"A força da senha é: {forca_senha}")
         elif opcao == "7":
             atualizar_codigo()
-        elif opcao == "0":
-            break
+        elif opcao == "8":
+            sys.exit()
         else:
-            print(f"{Fore.RED}Opção inválida. Tente novamente.{Style.RESET_ALL}")
+            print("Opção inválida. Tente novamente.")
 
 exibir_menu()
