@@ -79,8 +79,8 @@ def filtrar_senhas_10_digitos():
     print(f"{Fore.GREEN}Senhas filtradas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
 
 def filtrar_senhas_12_digitos():
-    caminho_arquivo = os.path.expanduser("/senhas.txt")
-    caminho_saida = os.path.expanduser("/senhas_filtradas_12.txt")
+    caminho_arquivo = os.path.expanduser("/root/senhas.txt")
+    caminho_saida = os.path.expanduser("/root/senhas_filtradas_12.txt")
 
     if not validar_arquivo(caminho_arquivo):
         return
