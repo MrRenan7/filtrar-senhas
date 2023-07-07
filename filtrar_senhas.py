@@ -205,7 +205,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}║ [06] • Verificar força da senha          ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [07] • Obter informações do sistema      ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [08] • Atualizar código                  ║{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}║ [09] • Sair                              ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [00] • Sair                              ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
         print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
 
@@ -241,7 +241,7 @@ def exibir_menu():
                     print(f"{Fore.CYAN}{Style.BRIGHT}║   {chave:<37}{valor:<37}║{Style.RESET_ALL}")
         elif opcao == "8":
             atualizar_codigo()
-        elif opcao == "9":
+        elif opcao == "0":
             sys.exit()
         else:
             print("Opção inválida. Tente novamente.")
