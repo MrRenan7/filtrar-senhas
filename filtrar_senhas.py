@@ -173,14 +173,14 @@ def atualizar_codigo():
 def exibir_menu():
     while True:
         print(f"{Fore.YELLOW}==== MENU ===={Style.RESET_ALL}")
-        print(f"{Fore.CYAN}1. Filtrar senhas de 4 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}2. Filtrar senhas de 8 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}3. Filtrar senhas de 10 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}4. Filtrar senhas de 12 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}5. Gerar senhas aleatórias{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}6. Verificar força da senha{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}7. Atualizar código{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}8. Sair{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[01] • Filtrar senhas de 4 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[02] • Filtrar senhas de 8 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[03] • Filtrar senhas de 10 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[04] • Filtrar senhas de 12 dígitos{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[05] • Gerar senhas aleatórias{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[06] • Verificar força da senha{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[07] • Atualizar código{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}[08] • Sair{Style.RESET_ALL}")
         print(f"{Fore.GREEN}Script made by @MrRenan7{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
