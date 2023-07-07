@@ -196,17 +196,18 @@ def atualizar_codigo():
 
 def exibir_menu():
     while True:
-        print(f"{Fore.YELLOW}==== MENU ===={Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[01] • Filtrar senhas de 4 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[02] • Filtrar senhas de 8 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[03] • Filtrar senhas de 10 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[04] • Filtrar senhas de 12 dígitos{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[05] • Gerar senhas aleatórias{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[06] • Verificar força da senha{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[07] • Obter informações do sistema{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[08] • Atualizar código{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}[09] • Sair{Style.RESET_ALL}")
-        print(f"{Fore.GREEN}Script made by @MrRenan7{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{Style.BRIGHT}╔══════════════════ MENU ══════════════════╗{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [01] • Filtrar senhas de 4 dígitos       ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [02] • Filtrar senhas de 8 dígitos       ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [03] • Filtrar senhas de 10 dígitos      ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [04] • Filtrar senhas de 12 dígitos      ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [05] • Gerar senhas aleatórias           ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [06] • Verificar força da senha          ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [07] • Obter informações do sistema      ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [08] • Atualizar código                  ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [09] • Sair                              ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
+        print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
@@ -235,14 +236,14 @@ def exibir_menu():
 
             # Exibir as informações do sistema
             for categoria, detalhes in informacoes_sistema.items():
-                print("•", categoria, "•")
+                print(f"{Fore.CYAN}{Style.BRIGHT}║ {categoria:<41} ║{Style.RESET_ALL}")
                 for chave, valor in detalhes.items():
-                    print(chave + ":", valor)
-                print()
+                    print(f"{Fore.CYAN}{Style.BRIGHT}║   {chave:<37}{valor:<37}║{Style.RESET_ALL}")
         elif opcao == "8":
             atualizar_codigo()
         elif opcao == "9":
             sys.exit()
+        else:
             print("Opção inválida. Tente novamente.")
 
 exibir_menu()
