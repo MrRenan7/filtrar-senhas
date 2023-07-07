@@ -196,12 +196,12 @@ def atualizar_codigo():
 
 def exibir_menu():
     while True:
-        print(f"{Fore.CYAN}{Style.BRIGHT}╔══════════════════ MENU ══════════════════╗{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}{Style.BRIGHT}╔═══════════════════ MENU ═════════════════╗{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [01] • Filtrar senhas de 4 dígitos       ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [02] • Filtrar senhas de 8 dígitos       ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [03] • Filtrar senhas de 10 dígitos      ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [04] • Filtrar senhas de 12 dígitos      ║{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}║ [05] • Gerar senhas aleatórias           ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [05] • Gerar senhas aleatórias (Seguras) ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [06] • Verificar força da senha          ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [07] • Obter informações do sistema      ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [08] • Atualizar código                  ║{Style.RESET_ALL}")
