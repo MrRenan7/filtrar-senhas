@@ -181,14 +181,14 @@ def atualizar_codigo():
         novo_codigo = response.text
 
         # Salvar o novo código em um novo arquivo
-        with open("filtrar_senha.py", "w") as arquivo:
+        with open("filtrar_senhas.py", "w") as arquivo:
             arquivo.write(novo_codigo)
 
         print("Código atualizado com sucesso.")
 
         # Reiniciar o script com o novo arquivo
         python = sys.executable
-        subprocess.call([python, "filtrar_senha.py"])
+        subprocess.call([python, "filtrar_senhas.py"])
         sys.exit()
 
     else:
