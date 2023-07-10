@@ -2,84 +2,12 @@ import os
 import random
 import sys
 import subprocess
-import psutil
 import requests
 from colorama import Fore, Style
 
 def run_command(command):
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     return result.stdout.strip()
-
-def info_sistema():
-    # Obtendo informações do sistema operacional
-    system_info = run_command("lsb_release -a")
-    kernel_version = run_command("uname -r")
-    virtualization = run_command("systemd-detect-virt")
-    architecture = run_command("uname -m")
-
-    # Obtendo informações do processador
-    processor_model = run_command("cat /proc/cpuinfo | grep 'model name' | uniq | cut -d ':' -f 2")
-    num_cores = run_command("nproc")
-    cache_size = run_command("lscpu | grep 'L3 cache' | cut -d ':' -f 2 | awk '{print $1,$2}'")
-    cpu_usage = run_command("top -bn1 | grep 'Cpu(s)' | awk '{print $2}'")
-
-    # Obtendo informações da memória RAM
-    memory_info = run_command("free -h")
-    memory_lines = memory_info.split('\n')
-    total_memory = ""
-    free_memory = ""
-    cached_memory = ""
-    ram_usage = ""
-
-    if len(memory_lines) > 2:
-        total_memory = memory_lines[1].split()[1]
-        free_memory = memory_lines[2].split()[3]
-        if len(memory_lines[2].split()) > 5:
-            cached_memory = memory_lines[2].split()[5]
-        ram_usage = memory_lines[2].split()[2]
-
-    # Obtendo serviços em execução e suas portas
-    services = {
-        'v2ray': [],
-        'plugin-bo': [],
-        'sshd': [],
-        'stunnel4': [],
-        'check_use': [],
-        'badvpn-ud': [],
-        'python': [],
-        'nginx': []
-    }
-
-    for conn in psutil.net_connections():
-        if conn.status == "LISTEN":
-            for service, ports in services.items():
-                if conn.laddr.port in ports:
-                    services[service].append(conn.laddr.port)
-
-    # Retornando as informações coletadas
-    informacoes = {
-        'Sistema Operacional': {
-            'Informação': system_info,
-            'Kernel': kernel_version,
-            'Virtualização': virtualization,
-            'Arquitetura': architecture
-        },
-        'Processador': {
-            'Modelo': processor_model,
-            'Núcleos': num_cores,
-            'Memória Cache': cache_size,
-            'Utilização': cpu_usage + "%"
-        },
-        'Memória RAM': {
-            'Total': total_memory,
-            'Livre': free_memory,
-            'Cache': cached_memory,
-            'Utilização': ram_usage
-        },
-        'Serviços em Execução': services
-    }
-
-    return informacoes
 
 def validar_arquivo(caminho_arquivo):
     if not os.path.isfile(caminho_arquivo):
@@ -203,11 +131,10 @@ def exibir_menu():
         print(f"{Fore.CYAN}║ [04] • Filtrar senhas de 12 dígitos      ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [05] • Gerar senhas aleatórias (Seguras) ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [06] • Verificar força da senha          ║{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}║ [07] • Obter informações do sistema      ║{Style.RESET_ALL}")
-        print(f"{Fore.CYAN}║ [08] • Atualizar código                  ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [07] • Atualizar código                  ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [00] • Sair                              ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
-        print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
+        print(f"{Fore.RED}Script made by @MrRenan7teste{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
@@ -232,14 +159,6 @@ def exibir_menu():
             forca_senha = verificar_forca_senha(senha)
             print(f"A força da senha é: {forca_senha}")
         elif opcao == "7":
-            informacoes_sistema = info_sistema()
-
-            # Exibir as informações do sistema
-            for categoria, detalhes in informacoes_sistema.items():
-                print(f"{Fore.CYAN}{Style.BRIGHT}║ {categoria:<41} ║{Style.RESET_ALL}")
-                for chave, valor in detalhes.items():
-                    print(f"{Fore.CYAN}{Style.BRIGHT}║   {chave:<37}{valor:<37}║{Style.RESET_ALL}")
-        elif opcao == "8":
             atualizar_codigo()
         elif opcao == "0":
             sys.exit()
