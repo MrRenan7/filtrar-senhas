@@ -193,7 +193,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}║ [09] • Descriptografar senhas            ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [00] • Sair                              ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
-        print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
+        print(f"{Fore.RED}Script made by @MrRenan777{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
