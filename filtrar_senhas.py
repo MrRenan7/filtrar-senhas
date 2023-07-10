@@ -4,10 +4,17 @@ import sys
 import subprocess
 import requests
 from colorama import Fore, Style
+from cryptography.fernet import Fernet
 
-def run_command(command):
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    return result.stdout.strip()
+def gerar_chave():
+    chave = Fernet.generate_key()
+    with open('chave.key', 'wb') as chave_arquivo:
+        chave_arquivo.write(chave)
+
+def carregar_chave():
+    with open('chave.key', 'rb') as chave_arquivo:
+        chave = chave_arquivo.read()
+    return chave
 
 def validar_arquivo(caminho_arquivo):
     if not os.path.isfile(caminho_arquivo):
@@ -122,6 +129,56 @@ def atualizar_codigo():
     else:
         print(f"Erro ao atualizar o código: {response.status_code}")
 
+def criptografar_senhas():
+    chave = carregar_chave()
+    f = Fernet(chave)
+
+    caminho_arquivo = os.path.expanduser("/root/senhas.txt")
+    caminho_saida = os.path.expanduser("/root/senhas.criptografadas.txt")
+
+    if not validar_arquivo(caminho_arquivo):
+        return
+
+    with open(caminho_arquivo, 'r') as arquivo_entrada:
+        senhas = arquivo_entrada.readlines()
+
+    senhas_criptografadas = []
+    for senha in senhas:
+        senha = senha.strip().encode()
+        senha_criptografada = f.encrypt(senha)
+        senhas_criptografadas.append(senha_criptografada)
+
+    with open(caminho_saida, 'wb') as arquivo_saida:
+        for senha_criptografada in senhas_criptografadas:
+            arquivo_saida.write(senha_criptografada + b'\n')
+
+    print(f"{Fore.GREEN}Senhas criptografadas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
+
+def descriptografar_senhas():
+    chave = carregar_chave()
+    f = Fernet(chave)
+
+    caminho_arquivo = os.path.expanduser("/root/senhas.crip.txt")
+    caminho_saida = os.path.expanduser("/root/senhas_descriptografadas.txt")
+
+    if not validar_arquivo(caminho_arquivo):
+        return
+
+    with open(caminho_arquivo, 'rb') as arquivo_entrada:
+        senhas_criptografadas = arquivo_entrada.readlines()
+
+    senhas_descriptografadas = []
+    for senha_criptografada in senhas_criptografadas:
+        senha_criptografada = senha_criptografada.strip()
+        senha_descriptografada = f.decrypt(senha_criptografada)
+        senhas_descriptografadas.append(senha_descriptografada.decode())
+
+    with open(caminho_saida, 'w') as arquivo_saida:
+        for senha_descriptografada in senhas_descriptografadas:
+            arquivo_saida.write(senha_descriptografada + '\n')
+
+    print(f"{Fore.GREEN}Senhas descriptografadas foram salvas no arquivo {caminho_saida}.{Style.RESET_ALL}")
+
 def exibir_menu():
     while True:
         print(f"{Fore.CYAN}{Style.BRIGHT}╔═══════════════════ MENU ═════════════════╗{Style.RESET_ALL}")
@@ -132,9 +189,11 @@ def exibir_menu():
         print(f"{Fore.CYAN}║ [05] • Gerar senhas aleatórias (Seguras) ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [06] • Verificar força da senha          ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [07] • Atualizar código                  ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [08] • Criptografar senhas               ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [09] • Descriptografar senhas            ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [00] • Sair                              ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
-        print(f"{Fore.RED}Script made by @MrRenan7teste{Style.RESET_ALL}")
+        print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
@@ -160,6 +219,10 @@ def exibir_menu():
             print(f"A força da senha é: {forca_senha}")
         elif opcao == "7":
             atualizar_codigo()
+        elif opcao == "8":
+            criptografar_senhas()
+        elif opcao == "9":
+            descriptografar_senhas()
         elif opcao == "0":
             sys.exit()
         else:
