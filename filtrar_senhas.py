@@ -207,7 +207,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}║ [08] • Atualizar código                  ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [00] • Sair                              ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
-        print(f"{Fore.RED}Script made by @MrRenan7a{Style.RESET_ALL}")
+        print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
 
         opcao = input("Escolha uma opção: ")
 
