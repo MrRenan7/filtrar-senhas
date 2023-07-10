@@ -134,7 +134,7 @@ def criptografar_senhas():
     f = Fernet(chave)
 
     caminho_arquivo = os.path.expanduser("/root/senhas.txt")
-    caminho_saida = os.path.expanduser("/root/senhas.criptografadas.txt")
+    caminho_saida = os.path.expanduser("/root/senhas.crip.txt")
 
     if not validar_arquivo(caminho_arquivo):
         return
@@ -191,6 +191,7 @@ def exibir_menu():
         print(f"{Fore.CYAN}║ [07] • Atualizar código                  ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [08] • Criptografar senhas               ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [09] • Descriptografar senhas            ║{Style.RESET_ALL}")
+        print(f"{Fore.CYAN}║ [10] • Gerar chave                       ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}║ [00] • Sair                              ║{Style.RESET_ALL}")
         print(f"{Fore.CYAN}{Style.BRIGHT}╚══════════════════════════════════════════╝{Style.RESET_ALL}")
         print(f"{Fore.RED}Script made by @MrRenan7{Style.RESET_ALL}")
@@ -223,6 +224,8 @@ def exibir_menu():
             criptografar_senhas()
         elif opcao == "9":
             descriptografar_senhas()
+        elif opcao == "10":
+            gerar_chave()
         elif opcao == "0":
             sys.exit()
         else:
